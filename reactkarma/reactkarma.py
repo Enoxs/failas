@@ -161,6 +161,27 @@ class ReactKarma(getattr(commands, "Cog", object)):
         await self.conf.user(user).karma.set(0)
         await ctx.send("{} taškai buvo nustatyti į 0.".format(user.display_name))
 
+    @commands.command(name="pridetitaska")
+    @checks.is_owner()
+    async def prideti_taska(self, ctx: commands.Context, user: discord.Member):
+        """Resets a user's karma."""
+        log.debug("Pridedamas %s taskas", str(user))
+        # noinspection PyTypeChecker
+        nustatymas = self.conf.user(user).karma.set(0)
+        taskas = await nustatymas.karma()
+        await nustatymas.karma.set(taskas + 1)
+        await ctx.send("{} taškas buvo pridetas į %taskas plius vienas.".format(user.display_name))
+        
+    @commands.command(name="atimtitaska")
+    @checks.is_owner()
+    async def atimti_taska(self, ctx: commands.Context, user: discord.Member):
+        """Resets a user's karma."""
+        log.debug("Resetting %s's karma", str(user))
+        # noinspection PyTypeChecker
+        await self.conf.user(user).karma.set(0)
+        await ctx.send("{} taškai buvo nustatyti į 0.".format(user.display_name))
+        
+        
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction: discord.Reaction, user: discord.User):
         """Fires when the bot sees a reaction being added, and updates karma.
