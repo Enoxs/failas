@@ -90,7 +90,7 @@ class ReactKarma(getattr(commands, "Cog", object)):
             for page in pagify(highscore, shorten_by=12):
                 await ctx.send(box(page, lang="py"))
         else:
-            await ctx.send("No one has any karma 🙁")
+            await ctx.send("Niekas neturi taškų 🙁")
 
     @commands.command(name="karma")
     @commands.guild_only()
@@ -102,7 +102,7 @@ class ReactKarma(getattr(commands, "Cog", object)):
         if user is None:
             user = ctx.author
         karma = await self.conf.user(user).karma()
-        await ctx.send("{0} has {1} karma.".format(user.display_name, karma))
+        await ctx.send("{0} turi {1} taškų.".format(user.display_name, karma))
 
     @commands.command(name="setupvote")
     @commands.guild_only()
@@ -159,7 +159,7 @@ class ReactKarma(getattr(commands, "Cog", object)):
         log.debug("Resetting %s's karma", str(user))
         # noinspection PyTypeChecker
         await self.conf.user(user).karma.set(0)
-        await ctx.send("{}'s karma has been reset to 0.".format(user.display_name))
+        await ctx.send("{} taškai buvo nustatyti į 0.".format(user.display_name))
 
     @commands.Cog.listener()
     async def on_reaction_add(self, reaction: discord.Reaction, user: discord.User):
