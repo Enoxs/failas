@@ -7,6 +7,6 @@
   "disabled": false,
   "required_cogs": {},
   "requirements": [],
-  "tags": ["karma", "upvote", "downvote"],
+  "tags": ["taskai", "upvote", "downvote"],
   "type": "COG"
 }
