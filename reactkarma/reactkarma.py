@@ -163,12 +163,12 @@ class ReactKarma(getattr(commands, "Cog", object)):
 
     @commands.command(name="pridetitaska")
     @checks.is_owner()
-    async def prideti_taska(self, ctx: commands.Context, user: discord.Member):
+    async def prideti_taska(self, ctx: commands.Context, user: discord.User):
         """Resets a user's karma."""
         log.debug("Pridedamas %s taskas", str(user))
         # noinspection PyTypeChecker
         await self._add_karma(user, 1)
-        await ctx.send("{} taškas buvo pridetas į %taskas plius vienas.".format(user.display_name))
+        await ctx.send("{} taškas buvo pridetas.".format(user.display_name))
         
     @commands.command(name="atimtitaska")
     @checks.is_owner()
