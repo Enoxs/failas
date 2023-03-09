@@ -62,7 +62,7 @@ class ReactKarma(getattr(commands, "Cog", object)):
         await ctx.send(reply)
 
     @commands.command()
-    async def karmaboard(self, ctx: commands.Context, top: int = 10):
+    async def toptaskai(self, ctx: commands.Context, top: int = 10):
         """Prints out the karma leaderboard.
 
         Defaults to top 10. Use negative numbers to reverse the leaderboard.
@@ -92,7 +92,7 @@ class ReactKarma(getattr(commands, "Cog", object)):
         else:
             await ctx.send("Niekas neturi taškų 🙁")
 
-    @commands.command(name="karma")
+    @commands.command(name="taskai")
     @commands.guild_only()
     async def get_karma(self, ctx: commands.Context, user: discord.Member = None):
         """Check a user's karma.
