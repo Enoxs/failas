@@ -167,9 +167,7 @@ class ReactKarma(getattr(commands, "Cog", object)):
         """Resets a user's karma."""
         log.debug("Pridedamas %s taskas", str(user))
         # noinspection PyTypeChecker
-        nustatymas = self.conf.user(user)
-        taskas = await nustatymas.karma()
-        await nustatymas.karma.set(taskas + 1)
+        await self._add_karma(user, 1)
         await ctx.send("{} taškas buvo pridetas į %taskas plius vienas.".format(user.display_name))
         
     @commands.command(name="atimtitaska")
